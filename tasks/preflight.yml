@@ -81,7 +81,7 @@
         body_format: json
         user: "{{ lookup('env', 'GH_USER') | default(omit) }}"
         password: "{{ lookup('env', 'GH_TOKEN') | default(omit) }}"
-      no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
+        #      no_log: "{{ not lookup('env', 'MOLECULE_DEBUG') | bool }}"
       register: _latest_release
       until: _latest_release.status == 200
       retries: 5
@@ -92,7 +92,7 @@
   when:
     - node_exporter_version == "latest"
     - node_exporter_binary_local_dir | length == 0
-  delegate_to: localhost
+      #  delegate_to: localhost
   run_once: true
 
 - block:
